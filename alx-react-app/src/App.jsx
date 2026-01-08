@@ -1,3 +1,4 @@
+import UserProfile from './components/UserProfile';
 import MainContent from './MainContent';
 import Footer from './Footer';
 import WelcomeMessage from './components/WelcomeMessage'
@@ -11,9 +12,19 @@ function App() {
 
   return (
     <>
+      <UserProfile
+        name="Alice"
+        age="25"
+        bio="Loves hiking and photography"
+      />
       <Header />
       <MainContent />
       <Footer />
+      <UserProfile
+        name="Alice"
+        age="25"
+        bio="Loves hiking and photography"
+      />
       <WelcomeMessage />
       <div>
         <a href="https://vite.dev" target="_blank">
