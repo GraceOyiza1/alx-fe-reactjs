@@ -1,8 +1,8 @@
 import Header from './components/Header.jsx';
-import MainContent from './MainContent';
-import Footer from './Footer';
-import UserProfile from './components/UserProfile';
-import WelcomeMessage from './components/WelcomeMessage'
+import MainContent from './components/MainContent.jsx';
+import Footer from './components/Footer.jsx';
+import UserProfile from './components/UserProfile.jsx';
+import WelcomeMessage from './components/WelcomeMessage.jsx'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
