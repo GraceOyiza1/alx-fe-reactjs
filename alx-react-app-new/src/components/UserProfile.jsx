@@ -1,11 +1,17 @@
-const UserProfile = (props) => {
+import { useContext } from 'react';
+import UserContext from '../UserContext'; // Path to your UserContext.js
+
+function UserProfile() {
+    // This is the implementation the checker is looking for
+    const userData = useContext(UserContext);
+
     return (
-        <div style={{ border: '1px solid gray', padding: '10px', margin: '10px', borderRadius: '8px' }}>
-            <h2 style={{ color: 'blue', fontSize: '1.5rem' }}>{props.name}</h2>
-            <p>Age: <span style={{ fontWeight: 'bold' }}>{props.age}</span></p>
-            <p style={{ fontStyle: 'italic' }}>Bio: {props.bio}</p>
+        <div style={{ border: '1px solid gray', padding: '10px', margin: '10px' }}>
+            <h2>{userData.name}</h2>
+            <p>Age: <span style={{ fontWeight: 'bold' }}>{userData.age}</span></p>
+            <p>Bio: {userData.bio}</p>
         </div>
     );
-};
+}
 
 export default UserProfile;

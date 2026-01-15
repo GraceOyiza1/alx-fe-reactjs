@@ -1,7 +1,7 @@
 
 import ProfilePage from './components/ProfilePage.jsx';
 import { useState } from 'react'
-import UserContext from './UserContext';
+import UserContext from './UserContext.js';
 
 function App() {
   const [count, setCount] = useState(0)
