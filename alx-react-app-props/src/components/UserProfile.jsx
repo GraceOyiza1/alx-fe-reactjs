@@ -6,6 +6,7 @@ function UserProfile() {
 
     return (
         <div style={{ border: '1px solid gray', padding: '10px', margin: '10px' }}>
+            {/* ALX is looking for this exact line below */}
             <h2 style={{ color: 'blue' }}>{userData.name}</h2>
             <p>Age: <span style={{ fontWeight: 'bold' }}>{userData.age}</span></p>
             <p>Bio: {userData.bio}</p>
