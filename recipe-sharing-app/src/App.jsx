@@ -3,7 +3,9 @@ import Navbar from './components/Navbar';
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
-import SearchBar from './components/SearchBar'; // Import SearchBar
+import SearchBar from './components/SearchBar';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
 
 function App() {
   return (
@@ -13,12 +15,17 @@ function App() {
         <h1>Recipe Sharing App</h1>
         <Routes>
           <Route path="/" element={
-            <>
-              <SearchBar /> {/* Add SearchBar here */}
-              <AddRecipeForm />
-              <hr />
-              <RecipeList />
-            </>
+            <div style={{ display: 'flex', gap: '40px' }}>
+              <div style={{ flex: 2 }}>
+                <SearchBar />
+                <AddRecipeForm />
+                <RecipeList />
+              </div>
+              <div style={{ flex: 1 }}>
+                <FavoritesList />
+                <RecommendationsList />
+              </div>
+            </div>
           } />
           <Route path="/recipe/:recipeId" element={<RecipeDetailsWrapper />} />
         </Routes>
@@ -26,4 +33,3 @@ function App() {
     </Router>
   );
 }
-// ... include RecipeDetailsWrapper as before
