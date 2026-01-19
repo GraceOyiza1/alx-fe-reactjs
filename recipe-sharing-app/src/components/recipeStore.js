@@ -5,6 +5,8 @@ export const useRecipeStore = create((set) => ({
     searchTerm: '',
     setSearchTerm: (term) => set({ searchTerm: term }),
     filteredRecipes: [],
+    // Task 0 needs this exact action name
+    setRecipes: (recipes) => set({ recipes }),
     filterRecipes: () => set((state) => ({
         filteredRecipes: state.recipes.filter((recipe) =>
             recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
