@@ -48,6 +48,10 @@ const RecipeDetail = () => {
                             <li>Step 3: Serve and enjoy!</li>
                         </ol>
                     </section>
+
+
+                    <h2 className="text-2xl font-semibold mb-3">Cooking Instructions</h2>
+                    <p className="text-gray-600">Follow these instructions to make the dish...</p>
                 </div>
             </div>
         </div>
