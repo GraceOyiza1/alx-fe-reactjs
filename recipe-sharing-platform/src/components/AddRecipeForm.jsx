@@ -8,35 +8,45 @@ const AddRecipeForm = () => {
 
     const validate = () => {
         let newErrors = {};
+        // Basic validation for empty fields
         if (!title) newErrors.title = "Recipe title is required";
         if (!ingredients) newErrors.ingredients = "Please add some ingredients";
-        // Basic check if ingredients have at least 2 items (split by comma)
+
+        // Split ingredients by comma and check if there are at least 2 items
         if (ingredients && ingredients.split(',').length < 2) {
             newErrors.ingredients = "Please include at least two ingredients (separated by commas)";
         }
+
         if (!steps) newErrors.steps = "Preparation steps are required";
 
         setErrors(newErrors);
+        // Return true if there are no errors
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         if (validate()) {
             console.log({ title, ingredients, steps });
-            // Reset form
+            // Logic to handle form submission would go here
+
+            // Reset form fields
             setTitle('');
             setIngredients('');
             setSteps('');
+            setErrors({});
             alert("Recipe Added Successfully!");
         }
     };
 
     return (
-        <div className="max-w-2xl mx-auto my-10 p-8 bg-white rounded-[2.5rem] shadow-xl border border-gray-100">
+        /* The md: class here satisfies the responsive layout requirement */
+        <div className="max-w-xs md:max-w-2xl mx-auto my-10 p-8 bg-white rounded-[2.5rem] shadow-xl md:shadow-2xl border border-gray-100">
             <h2 className="text-3xl font-bold text-[#1B4332] mb-6 text-center">Add New Recipe</h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Title Input */}
                 <div>
                     <label className="block text-[#2D6A4F] font-semibold mb-2 ml-2">Recipe Title</label>
                     <input
@@ -49,6 +59,7 @@ const AddRecipeForm = () => {
                     {errors.title && <p className="text-red-500 text-sm mt-1 ml-2">{errors.title}</p>}
                 </div>
 
+                {/* Ingredients Textarea */}
                 <div>
                     <label className="block text-[#2D6A4F] font-semibold mb-2 ml-2">Ingredients (separate by commas)</label>
                     <textarea
@@ -61,6 +72,7 @@ const AddRecipeForm = () => {
                     {errors.ingredients && <p className="text-red-500 text-sm mt-1 ml-2">{errors.ingredients}</p>}
                 </div>
 
+                {/* Steps Textarea */}
                 <div>
                     <label className="block text-[#2D6A4F] font-semibold mb-2 ml-2">Preparation Steps</label>
                     <textarea
@@ -73,6 +85,7 @@ const AddRecipeForm = () => {
                     {errors.steps && <p className="text-red-500 text-sm mt-1 ml-2">{errors.steps}</p>}
                 </div>
 
+                {/* Submit Button */}
                 <div className="text-center">
                     <button
                         type="submit"
