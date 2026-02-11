@@ -13,7 +13,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold mb-6 text-center">Recipe Sharing Platform</h1>
 
-
+            {/* Responsive Grid Layout */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {recipes.map(recipe => (
                     <div key={recipe.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out hover:scale-105 transform">
