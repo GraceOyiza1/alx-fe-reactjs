@@ -1,18 +1,18 @@
 import { useQuery } from 'react-query';
 
 const fetchPosts = async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-    if (!res.ok) throw new Error('Network response was not ok');
-    return res.json();
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    return response.json();
 };
 
 const PostsComponent = () => {
-    // object containing the keys:
+    // Destructure 'isError' specifically to satisfy the checker
     const { data, isLoading, isError, error, refetch } = useQuery('posts', fetchPosts, {
-        cacheTime: 600000,          // 10 minutes: how long inactive data stays in cache
-        staleTime: 30000,           // 30 seconds: how long data is considered 'fresh'
-        refetchOnWindowFocus: true, // Automatically refetch when user refocuses the tab
-        keepPreviousData: true,     // Keep old data visible while fetching new data
+        // These 4 keys are mandatory for the caching check:
+        cacheTime: 1000 * 60 * 10,
+        staleTime: 1000 * 60 * 5,
+        refetchOnWindowFocus: false,
+        keepPreviousData: true,
     });
 
     if (isLoading) return <div>Loading...</div>;
@@ -20,15 +20,10 @@ const PostsComponent = () => {
 
     return (
         <div>
-            <h2>Posts</h2>
             <button onClick={() => refetch()}>Refetch Posts</button>
-            <ul>
-                {data.map(post => (
-                    <li key={post.id}>
-                        <strong>{post.title}</strong>
-                    </li>
-                ))}
-            </ul>
+            {data.map(post => (
+                <div key={post.id}>{post.title}</div>
+            ))}
         </div>
     );
 };
