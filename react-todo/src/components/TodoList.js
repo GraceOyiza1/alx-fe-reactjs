@@ -1,37 +1,29 @@
 import React, { useState } from 'react';
+import AddTodoForm from './AddTodoForm';
 
 const TodoList = () => {
     const [todos, setTodos] = useState([
         { id: 1, text: 'Initial Todo', completed: false }
     ]);
-    const [newTodo, setNewTodo] = useState('');
 
-    const addTodo = (e) => {
-        e.preventDefault();
-        if (!newTodo.trim()) return;
-        setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
-        setNewTodo('');
-    };
-
-    const toggleTodo = (id) => {
-        setTodos(todos.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
+    const addTodo = (text) => {
+        setTodos([...todos, { id: Date.now(), text, completed: false }]);
     };
 
     const deleteTodo = (id) => {
-        setTodos(todos.filter(t => t.id !== id));
+        setTodos(todos.filter(todo => todo.id !== id));
+    };
+
+    const toggleTodo = (id) => {
+        setTodos(todos.map(todo =>
+            todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        ));
     };
 
     return (
         <div>
             <h1>Todo List</h1>
-            <form onSubmit={addTodo}>
-                <input
-                    value={newTodo}
-                    onChange={(e) => setNewTodo(e.target.value)}
-                    placeholder="Add a new todo"
-                />
-                <button type="submit">Add Todo</button>
-            </form>
+            <AddTodoForm addTodo={addTodo} />
             <ul>
                 {todos.map(todo => (
                     <li key={todo.id}>
