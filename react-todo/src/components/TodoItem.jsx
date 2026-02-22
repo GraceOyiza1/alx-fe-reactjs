@@ -1,19 +1,24 @@
 import React from 'react';
+import './TodoItem.css';
 
 function TodoItem({ todo, onToggle, onDelete }) {
     return (
-        <li>
-            <span
-                onClick={() => onToggle(todo.id)}
-                style={{
-                    textDecoration: todo.completed ? 'line-through' : 'none',
-                    cursor: 'pointer'
-                }}
+        <div className="todo-item">
+            <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => onToggle(todo.id)}
+                aria-label={`Mark "${todo.text}" as ${todo.completed ? 'incomplete' : 'complete'}`}
+            />
+            <span className={todo.completed ? 'completed' : ''}>{todo.text}</span>
+            <button
+                onClick={() => onDelete(todo.id)}
+                className="delete-btn"
+                aria-label={`Delete "${todo.text}"`}
             >
-                {todo.text}
-            </span>
-            <button onClick={() => onDelete(todo.id)}>Delete</button>
-        </li>
+                Delete
+            </button>
+        </div>
     );
 }
 
